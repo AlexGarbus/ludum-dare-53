@@ -67,6 +67,10 @@ move_down={
 2d_physics/layer_2="enemies"
 2d_physics/layer_3="world"
 
+[physics]
+
+2d/default_gravity=1960.0
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
