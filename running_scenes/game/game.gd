@@ -10,6 +10,7 @@ var _player_spawn: Vector2
 
 
 func _ready() -> void:
+	PlayerData.reset()
 	_player_spawn = _player.global_position
 
 

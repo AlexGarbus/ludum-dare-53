@@ -6,5 +6,8 @@
 bg_color = Color(0, 0, 0, 1)
 
 [resource]
+HeadsUpDisplay/base_type = &"Label"
+HeadsUpDisplay/colors/font_outline_color = Color(0, 0, 0, 1)
+HeadsUpDisplay/constants/outline_size = 2
 Label/fonts/font = ExtResource("1_fbf8q")
 Panel/styles/panel = SubResource("StyleBoxFlat_veao7")

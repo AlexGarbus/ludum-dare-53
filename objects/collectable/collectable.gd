@@ -20,4 +20,5 @@ func disable() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		collected.emit()
+		PlayerData.inventory.collectables += 1
 		disable()

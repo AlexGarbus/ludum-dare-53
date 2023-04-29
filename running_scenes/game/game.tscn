@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://chm0t6pe4b8mt"]
+[gd_scene load_steps=7 format=3 uid="uid://chm0t6pe4b8mt"]
 
 [ext_resource type="PackedScene" uid="uid://bd2krml6i2c15" path="res://level/level.tscn" id="1_0ikda"]
 [ext_resource type="Script" path="res://running_scenes/game/game.gd" id="1_womsi"]
 [ext_resource type="PackedScene" uid="uid://bhhm4dfd6dwdx" path="res://objects/player/player.tscn" id="2_rimna"]
 [ext_resource type="Script" path="res://running_scenes/game/game_camera.gd" id="3_2rm3y"]
+[ext_resource type="PackedScene" uid="uid://k4tsgvk4xd1w" path="res://user_interface/heads_up_display/heads_up_display.tscn" id="5_kugxw"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_l6ohq"]
 distance = 0.01
@@ -12,10 +13,11 @@ distance = 0.01
 script = ExtResource("1_womsi")
 
 [node name="Level" parent="." instance=ExtResource("1_0ikda")]
+position = Vector2(0, -16)
 
 [node name="Player" parent="." instance=ExtResource("2_rimna")]
 unique_name_in_owner = true
-position = Vector2(40, 200)
+position = Vector2(40, 184)
 
 [node name="GameCamera" type="Camera2D" parent="."]
 unique_name_in_owner = true
@@ -33,4 +35,22 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameCamera/WorldBoundary"]
 shape = SubResource("WorldBoundaryShape2D_l6ohq")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HeadsUpDisplay" parent="CanvasLayer" instance=ExtResource("5_kugxw")]
+
+[connection signal="body_entered" from="Level/Plant" to="Level/Plant" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/Plant" to="Level/Plant" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Level/@Plant@43632" to="Level/@Plant@43632" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@43632" to="Level/@Plant@43632" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Level/@Plant@43633" to="Level/@Plant@43633" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@43633" to="Level/@Plant@43633" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Level/@Plant@43634" to="Level/@Plant@43634" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@43634" to="Level/@Plant@43634" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Level/@Plant@43635" to="Level/@Plant@43635" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@43635" to="Level/@Plant@43635" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Level/@Plant@43636" to="Level/@Plant@43636" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@43636" to="Level/@Plant@43636" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Level/@Plant@43637" to="Level/@Plant@43637" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@43637" to="Level/@Plant@43637" method="_on_body_exited" flags=18]
 [connection signal="body_entered" from="GameCamera/WorldBoundary" to="." method="_on_world_boundary_body_entered"]
