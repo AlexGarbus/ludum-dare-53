@@ -19,7 +19,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -32)]
+"values": [Vector2(0, -28)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3iseo"]
@@ -55,7 +55,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -32)]
+"values": [Vector2(0, 0), Vector2(0, -28)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -83,7 +83,7 @@ collision_layer = 0
 script = ExtResource("1_ul03o")
 
 [node name="Collectable" parent="." instance=ExtResource("1_6r6kx")]
-position = Vector2(0, -32)
+position = Vector2(0, -28)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_fvxom")
