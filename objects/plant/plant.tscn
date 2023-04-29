@@ -1,0 +1,111 @@
+[gd_scene load_steps=10 format=3 uid="uid://deqxa7mg4fehe"]
+
+[ext_resource type="PackedScene" uid="uid://48kexsuej2vh" path="res://objects/collectable/collectable.tscn" id="1_6r6kx"]
+[ext_resource type="Texture2D" uid="uid://cfinvtki7ycja" path="res://objects/plant/plant.png" id="1_fvxom"]
+[ext_resource type="Script" path="res://objects/plant/plant.gd" id="1_ul03o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dlt6q"]
+radius = 16.0
+
+[sub_resource type="Animation" id="Animation_8xvtj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Collectable:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3iseo"]
+_data = {
+"RESET": SubResource("Animation_8xvtj")
+}
+
+[sub_resource type="Animation" id="Animation_seelj"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Collectable:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bt7ft"]
+resource_name = "pluck"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Collectable:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -32)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Collectable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enable"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r4ho5"]
+_data = {
+"idle": SubResource("Animation_seelj"),
+"pluck": SubResource("Animation_bt7ft")
+}
+
+[node name="Plant" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_ul03o")
+
+[node name="Collectable" parent="." instance=ExtResource("1_6r6kx")]
+position = Vector2(0, -32)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fvxom")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("CircleShape2D_dlt6q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+autoplay = "plant/idle"
+libraries = {
+"": SubResource("AnimationLibrary_3iseo"),
+"plant": SubResource("AnimationLibrary_r4ho5")
+}
+
+[node name="PluckTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 10.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="collected" from="Collectable" to="." method="_on_collectable_collected"]
+[connection signal="timeout" from="PluckTimer" to="." method="_on_pluck_timer_timeout"]

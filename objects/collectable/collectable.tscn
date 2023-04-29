@@ -56,6 +56,7 @@ script = ExtResource("1_hurlg")
 texture = ExtResource("1_t8yel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_kcqvv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
