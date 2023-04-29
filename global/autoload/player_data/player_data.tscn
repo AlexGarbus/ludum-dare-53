@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvdlf6kjwg6vq"]
+[gd_scene load_steps=4 format=3 uid="uid://dvdlf6kjwg6vq"]
 
 [ext_resource type="Script" path="res://global/autoload/player_data/player_data.gd" id="1_cghbj"]
 [ext_resource type="Script" path="res://global/autoload/player_data/inventory.gd" id="2_5ug0v"]
+[ext_resource type="Script" path="res://general/stopwatch.gd" id="3_1v6ao"]
 
 [node name="PlayerData" type="Node"]
 script = ExtResource("1_cghbj")
@@ -9,3 +10,7 @@ script = ExtResource("1_cghbj")
 [node name="Inventory" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_5ug0v")
+
+[node name="GameStopwatch" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_1v6ao")

@@ -11,6 +11,7 @@ var _player_spawn: Vector2
 
 func _ready() -> void:
 	PlayerData.reset()
+	PlayerData.game_stopwatch.started = true
 	_player_spawn = _player.global_position
 
 
