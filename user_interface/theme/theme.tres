@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://djdva3ay43dso"]
+
+[ext_resource type="FontFile" uid="uid://citym74nc63p1" path="res://user_interface/theme/font/press_start_2P_regular.ttf" id="1_fbf8q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_veao7"]
+bg_color = Color(0, 0, 0, 1)
+
+[resource]
+Label/fonts/font = ExtResource("1_fbf8q")
+Panel/styles/panel = SubResource("StyleBoxFlat_veao7")

@@ -1,0 +1,91 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxr86w4gy5cvm"]
+
+[ext_resource type="Theme" uid="uid://djdva3ay43dso" path="res://user_interface/theme/theme.tres" id="1_fump6"]
+[ext_resource type="Script" path="res://running_scenes/title/title.gd" id="1_rhee3"]
+
+[node name="Title" type="Node"]
+script = ExtResource("1_rhee3")
+
+[node name="Menu" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fump6")
+
+[node name="Background" type="Panel" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Menu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 96.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Rutabaga
+Rocket"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InputPrompt" type="Label" parent="Menu"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press any key/button!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dialogue" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fump6")
+
+[node name="Background" type="Panel" parent="Dialogue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Dialogue"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -9.5
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "\"I must deliver the Rutabaga Rockets!\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
