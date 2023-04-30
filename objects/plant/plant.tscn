@@ -177,8 +177,12 @@ script = ExtResource("4_k2jot")
 unique_name_in_owner = true
 stream = ExtResource("5_2w5r3")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-8, -24, 16, 32)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="pluck_time_shortened" from="." to="Audio" method="_on_plant_pluck_time_shortened"]
 [connection signal="collected" from="Collectable" to="." method="_on_collectable_collected"]
 [connection signal="timeout" from="PluckTimer" to="." method="_on_pluck_timer_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -53,3 +53,8 @@ func _on_collectable_collected() -> void:
 
 func _on_pluck_timer_timeout() -> void:
 	_collectable_anim.play("plant/pluck")
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	_pluck_timer.stop()
+	_collectable_anim.play("plant/pluck")
