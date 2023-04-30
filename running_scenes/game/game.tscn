@@ -40,18 +40,4 @@ shape = SubResource("WorldBoundaryShape2D_l6ohq")
 
 [node name="HeadsUpDisplay" parent="CanvasLayer" instance=ExtResource("5_kugxw")]
 
-[connection signal="body_entered" from="Level/Plant" to="Level/Plant" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="Level/Plant" to="Level/Plant" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="Level/@Plant@72331" to="Level/@Plant@72331" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="Level/@Plant@72331" to="Level/@Plant@72331" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="Level/@Plant@72332" to="Level/@Plant@72332" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="Level/@Plant@72332" to="Level/@Plant@72332" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="Level/@Plant@72333" to="Level/@Plant@72333" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="Level/@Plant@72333" to="Level/@Plant@72333" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="Level/@Plant@72334" to="Level/@Plant@72334" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="Level/@Plant@72334" to="Level/@Plant@72334" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="Level/@Plant@72335" to="Level/@Plant@72335" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="Level/@Plant@72335" to="Level/@Plant@72335" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="Level/@Plant@72336" to="Level/@Plant@72336" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="Level/@Plant@72336" to="Level/@Plant@72336" method="_on_body_exited" flags=18]
 [connection signal="body_entered" from="GameCamera/WorldBoundary" to="." method="_on_world_boundary_body_entered"]
