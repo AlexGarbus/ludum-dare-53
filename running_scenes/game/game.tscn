@@ -13,6 +13,17 @@ distance = 0.01
 [node name="Game" type="Node"]
 script = ExtResource("1_womsi")
 
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Sky" type="ColorRect" parent="BackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.537255, 0.780392, 0.776471, 1)
+
 [node name="Level" parent="." instance=ExtResource("1_0ikda")]
 position = Vector2(0, -16)
 
@@ -37,9 +48,9 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameCamera/WorldBoundary"]
 shape = SubResource("WorldBoundaryShape2D_l6ohq")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UserInterfaceLayer" type="CanvasLayer" parent="."]
 
-[node name="HeadsUpDisplay" parent="CanvasLayer" instance=ExtResource("5_kugxw")]
+[node name="HeadsUpDisplay" parent="UserInterfaceLayer" instance=ExtResource("5_kugxw")]
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_n6ov0")
@@ -47,16 +58,16 @@ autoplay = true
 
 [connection signal="body_entered" from="Level/Plant" to="Level/Plant" method="_on_body_entered" flags=18]
 [connection signal="body_exited" from="Level/Plant" to="Level/Plant" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="Level/@Plant@131209" to="Level/@Plant@131209" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="Level/@Plant@131209" to="Level/@Plant@131209" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="Level/@Plant@131210" to="Level/@Plant@131210" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="Level/@Plant@131210" to="Level/@Plant@131210" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="Level/@Plant@131211" to="Level/@Plant@131211" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="Level/@Plant@131211" to="Level/@Plant@131211" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="Level/@Plant@131212" to="Level/@Plant@131212" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="Level/@Plant@131212" to="Level/@Plant@131212" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="Level/@Plant@131213" to="Level/@Plant@131213" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="Level/@Plant@131213" to="Level/@Plant@131213" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="Level/@Plant@131214" to="Level/@Plant@131214" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="Level/@Plant@131214" to="Level/@Plant@131214" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Level/@Plant@152832" to="Level/@Plant@152832" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@152832" to="Level/@Plant@152832" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Level/@Plant@152833" to="Level/@Plant@152833" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@152833" to="Level/@Plant@152833" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Level/@Plant@152834" to="Level/@Plant@152834" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@152834" to="Level/@Plant@152834" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Level/@Plant@152835" to="Level/@Plant@152835" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@152835" to="Level/@Plant@152835" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Level/@Plant@152836" to="Level/@Plant@152836" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@152836" to="Level/@Plant@152836" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Level/@Plant@152837" to="Level/@Plant@152837" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@152837" to="Level/@Plant@152837" method="_on_body_exited" flags=18]
 [connection signal="body_entered" from="GameCamera/WorldBoundary" to="." method="_on_world_boundary_body_entered"]
