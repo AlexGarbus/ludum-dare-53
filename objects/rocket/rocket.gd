@@ -2,32 +2,20 @@ class_name Rocket
 extends Node2D
 
 
-signal enabled()
-signal disabled()
-
 const ROTATION_RIGHT: float = 0
 const ROTATION_UP: float = PI / 2
 const ROTATION_LEFT: float = PI
 const ROTATION_DOWN: float = 3 * PI / 2
 
-@onready var _particles: GPUParticles2D = %GPUParticles2D
-@onready var _sprite: Sprite2D = %Sprite2D
+@export var gravity_factor: float = 0.01
+
+var gravity: float = 0.0
+var velocity := Vector2.ZERO
 
 
-func _ready() -> void:
-	_sprite.visible = false
-
-
-func enable() -> void:
-	_sprite.visible = true
-	_particles.emitting = true
-	enabled.emit()
-
-
-func disable() -> void:
-	_sprite.visible = false
-	_particles.emitting = false
-	disabled.emit()
+func _physics_process(delta: float) -> void:
+	velocity.y += gravity * delta
+	global_translate(velocity)
 
 
 func rotate_towards_direction(direction: Vector2) -> void:
@@ -41,13 +29,12 @@ func rotate_towards_direction(direction: Vector2) -> void:
 		global_rotation = ROTATION_UP
 
 
-func _on_player_used_rocket() -> void:
-	enable()
+func stop_thrust() -> void:
+	var stop_position: Vector2 = global_position
+	top_level = true
+	global_position = stop_position
+	gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * gravity_factor
 
 
-func _on_player_look_direction_changed(value: Vector2) -> void:
-	rotate_towards_direction(value)
-
-
-func _on_rocket_timer_timeout() -> void:
-	disable()
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()

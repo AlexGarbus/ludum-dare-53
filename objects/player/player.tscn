@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bhhm4dfd6dwdx"]
+[gd_scene load_steps=15 format=3 uid="uid://bhhm4dfd6dwdx"]
 
 [ext_resource type="Script" path="res://objects/player/player.gd" id="1_ow6go"]
 [ext_resource type="Texture2D" uid="uid://bv0k6pvnrt52l" path="res://objects/player/player.png" id="1_q8xvt"]
 [ext_resource type="PackedScene" uid="uid://cs6f4mvqqt54o" path="res://objects/rocket/rocket.tscn" id="2_kqbkn"]
+[ext_resource type="Script" path="res://objects/player/rocket_spawner.gd" id="3_r6pdr"]
 [ext_resource type="Script" path="res://objects/player/player_audio.gd" id="4_d65ge"]
 [ext_resource type="AudioStream" uid="uid://cb4o1r715l5ok" path="res://objects/player/jump.wav" id="5_ius6n"]
 [ext_resource type="Script" path="res://objects/player/player_graphics.gd" id="6_lv1gw"]
@@ -28,6 +29,20 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ojmso"]
 _data = {
 "RESET": SubResource("Animation_isnrt")
+}
+
+[sub_resource type="Animation" id="Animation_gxept"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
 }
 
 [sub_resource type="Animation" id="Animation_760me"]
@@ -62,20 +77,6 @@ tracks/0/keys = {
 "values": [2, 0, 3, 0]
 }
 
-[sub_resource type="Animation" id="Animation_gxept"]
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lya7a"]
 _data = {
 "air": SubResource("Animation_gxept"),
@@ -87,9 +88,6 @@ _data = {
 collision_mask = 6
 script = ExtResource("1_ow6go")
 
-[node name="Rocket" parent="." instance=ExtResource("2_kqbkn")]
-position = Vector2(0, 9)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 texture = ExtResource("1_q8xvt")
@@ -99,6 +97,11 @@ hframes = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 4)
 shape = SubResource("RectangleShape2D_r7yvx")
+
+[node name="RocketSpawner" type="Marker2D" parent="."]
+position = Vector2(0, 9)
+script = ExtResource("3_r6pdr")
+_rocket = ExtResource("2_kqbkn")
 
 [node name="RocketTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -126,10 +129,10 @@ script = ExtResource("6_lv1gw")
 [connection signal="idled" from="." to="Graphics" method="_on_player_idled"]
 [connection signal="jumped" from="." to="Audio" method="_on_player_jumped"]
 [connection signal="jumped" from="." to="Graphics" method="_on_player_jumped"]
-[connection signal="look_direction_changed" from="." to="Rocket" method="_on_player_look_direction_changed"]
 [connection signal="look_direction_changed" from="." to="Graphics" method="_on_player_look_direction_changed"]
-[connection signal="used_rocket" from="." to="Rocket" method="_on_player_used_rocket"]
+[connection signal="look_direction_changed" from="." to="RocketSpawner" method="_on_player_look_direction_changed"]
 [connection signal="used_rocket" from="." to="Graphics" method="_on_player_used_rocket"]
+[connection signal="used_rocket" from="." to="RocketSpawner" method="_on_player_used_rocket"]
 [connection signal="walked" from="." to="Graphics" method="_on_player_walked"]
 [connection signal="timeout" from="RocketTimer" to="." method="_on_rocket_timer_timeout"]
-[connection signal="timeout" from="RocketTimer" to="Rocket" method="_on_rocket_timer_timeout"]
+[connection signal="timeout" from="RocketTimer" to="RocketSpawner" method="_on_rocket_timer_timeout"]
