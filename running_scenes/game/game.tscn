@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://chm0t6pe4b8mt"]
+[gd_scene load_steps=8 format=3 uid="uid://chm0t6pe4b8mt"]
 
 [ext_resource type="PackedScene" uid="uid://bd2krml6i2c15" path="res://level/level.tscn" id="1_0ikda"]
 [ext_resource type="Script" path="res://running_scenes/game/game.gd" id="1_womsi"]
 [ext_resource type="PackedScene" uid="uid://bhhm4dfd6dwdx" path="res://objects/player/player.tscn" id="2_rimna"]
 [ext_resource type="Script" path="res://running_scenes/game/game_camera.gd" id="3_2rm3y"]
 [ext_resource type="PackedScene" uid="uid://k4tsgvk4xd1w" path="res://user_interface/heads_up_display/heads_up_display.tscn" id="5_kugxw"]
+[ext_resource type="AudioStream" uid="uid://cpc0auxwue03k" path="res://running_scenes/game/game.wav" id="6_n6ov0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_l6ohq"]
 distance = 0.01
@@ -40,4 +41,22 @@ shape = SubResource("WorldBoundaryShape2D_l6ohq")
 
 [node name="HeadsUpDisplay" parent="CanvasLayer" instance=ExtResource("5_kugxw")]
 
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_n6ov0")
+autoplay = true
+
+[connection signal="body_entered" from="Level/Plant" to="Level/Plant" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/Plant" to="Level/Plant" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Level/@Plant@131209" to="Level/@Plant@131209" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@131209" to="Level/@Plant@131209" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Level/@Plant@131210" to="Level/@Plant@131210" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@131210" to="Level/@Plant@131210" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Level/@Plant@131211" to="Level/@Plant@131211" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@131211" to="Level/@Plant@131211" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Level/@Plant@131212" to="Level/@Plant@131212" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@131212" to="Level/@Plant@131212" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Level/@Plant@131213" to="Level/@Plant@131213" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@131213" to="Level/@Plant@131213" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Level/@Plant@131214" to="Level/@Plant@131214" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@131214" to="Level/@Plant@131214" method="_on_body_exited" flags=18]
 [connection signal="body_entered" from="GameCamera/WorldBoundary" to="." method="_on_world_boundary_body_entered"]
