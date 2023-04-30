@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhhm4dfd6dwdx"]
+[gd_scene load_steps=7 format=3 uid="uid://bhhm4dfd6dwdx"]
 
 [ext_resource type="Script" path="res://objects/player/player.gd" id="1_ow6go"]
 [ext_resource type="Texture2D" uid="uid://bv0k6pvnrt52l" path="res://objects/player/player.png" id="1_q8xvt"]
 [ext_resource type="PackedScene" uid="uid://cs6f4mvqqt54o" path="res://objects/rocket/rocket.tscn" id="2_kqbkn"]
 [ext_resource type="Script" path="res://objects/player/player_audio.gd" id="4_d65ge"]
 [ext_resource type="AudioStream" uid="uid://cb4o1r715l5ok" path="res://objects/player/jump.wav" id="5_ius6n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r7yvx"]
+size = Vector2(10, 8)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 6
@@ -18,8 +21,9 @@ texture = ExtResource("1_q8xvt")
 offset = Vector2(0, -8)
 hframes = 5
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-6, 8, -6, 0, -5, 0, -5, -1, -3, -1, -3, -2, 1, -2, 1, -1, 3, -1, 3, 0, 4, 0, 4, 8)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 4)
+shape = SubResource("RectangleShape2D_r7yvx")
 
 [node name="RocketTimer" type="Timer" parent="."]
 unique_name_in_owner = true
