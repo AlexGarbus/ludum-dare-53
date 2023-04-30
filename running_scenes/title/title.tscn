@@ -49,7 +49,9 @@ anchor_bottom = 1.0
 offset_top = -32.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Press any key/button!"
+theme_override_font_sizes/font_size = 8
+text = "Press any key/button to play!
+(Also presss Enter/Start to toggle fullscreen.)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
