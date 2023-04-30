@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 
+signal jumped()
 signal used_rocket(direction: Vector2)
 
 @export var _horizontal_speed := 300.0
@@ -20,6 +21,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif !_using_rocket:
 		if event.is_action_pressed("move_up") and is_on_floor():
 			velocity.y = _jump_velocity
+			jumped.emit()
 		elif event.is_action_released("move_up") and velocity.y < 0:
 			velocity.y *= _jump_interrupt_factor
 

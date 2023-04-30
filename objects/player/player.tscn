@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhhm4dfd6dwdx"]
+[gd_scene load_steps=6 format=3 uid="uid://bhhm4dfd6dwdx"]
 
 [ext_resource type="Script" path="res://objects/player/player.gd" id="1_ow6go"]
 [ext_resource type="Texture2D" uid="uid://bv0k6pvnrt52l" path="res://objects/player/player.png" id="1_q8xvt"]
 [ext_resource type="PackedScene" uid="uid://cs6f4mvqqt54o" path="res://objects/rocket/rocket.tscn" id="2_kqbkn"]
+[ext_resource type="Script" path="res://objects/player/player_audio.gd" id="4_d65ge"]
+[ext_resource type="AudioStream" uid="uid://cb4o1r715l5ok" path="res://objects/player/jump.wav" id="5_ius6n"]
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 6
@@ -22,6 +24,14 @@ unique_name_in_owner = true
 wait_time = 0.125
 one_shot = true
 
+[node name="Audio" type="Node" parent="."]
+script = ExtResource("4_d65ge")
+
+[node name="JumpPlayer" type="AudioStreamPlayer" parent="Audio"]
+unique_name_in_owner = true
+stream = ExtResource("5_ius6n")
+
+[connection signal="jumped" from="." to="Audio" method="_on_player_jumped"]
 [connection signal="used_rocket" from="." to="Rocket" method="_on_player_used_rocket"]
 [connection signal="timeout" from="RocketTimer" to="." method="_on_rocket_timer_timeout"]
 [connection signal="timeout" from="RocketTimer" to="Rocket" method="_on_rocket_timer_timeout"]
