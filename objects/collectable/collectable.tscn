@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://48kexsuej2vh"]
+[gd_scene load_steps=10 format=3 uid="uid://48kexsuej2vh"]
 
 [ext_resource type="Script" path="res://objects/collectable/collectable.gd" id="1_hurlg"]
 [ext_resource type="Texture2D" uid="uid://bnlfwwesa6l50" path="res://objects/rutabaga.png" id="1_t8yel"]
+[ext_resource type="Script" path="res://objects/collectable/collectable_audio.gd" id="3_nnson"]
+[ext_resource type="AudioStream" uid="uid://7tu6plnr5dvy" path="res://objects/collectable/collect.wav" id="4_b45bq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kcqvv"]
 size = Vector2(12, 20)
@@ -66,4 +68,12 @@ libraries = {
 "collectable": SubResource("AnimationLibrary_b3q53")
 }
 
+[node name="Audio" type="Node" parent="."]
+script = ExtResource("3_nnson")
+
+[node name="CollectPlayer" type="AudioStreamPlayer" parent="Audio"]
+unique_name_in_owner = true
+stream = ExtResource("4_b45bq")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="collected" from="." to="Audio" method="_on_collectable_collected"]
