@@ -1,13 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://deqxa7mg4fehe"]
+[gd_scene load_steps=16 format=3 uid="uid://deqxa7mg4fehe"]
 
 [ext_resource type="PackedScene" uid="uid://48kexsuej2vh" path="res://objects/collectable/collectable.tscn" id="1_6r6kx"]
 [ext_resource type="Texture2D" uid="uid://cfinvtki7ycja" path="res://objects/plant/plant.png" id="1_fvxom"]
 [ext_resource type="Script" path="res://objects/plant/plant.gd" id="1_ul03o"]
 [ext_resource type="Script" path="res://objects/plant/plant_audio.gd" id="4_k2jot"]
 [ext_resource type="AudioStream" uid="uid://cvmab1jnbgrq2" path="res://objects/plant/pluck.wav" id="5_2w5r3"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_dlt6q"]
-radius = 16.0
 
 [sub_resource type="Animation" id="Animation_8xvtj"]
 length = 0.001
@@ -21,7 +18,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -28)]
+"values": [Vector2(0, -14)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3iseo"]
@@ -57,7 +54,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -28)]
+"values": [Vector2(0, 0), Vector2(0, -14)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -80,12 +77,77 @@ _data = {
 "pluck": SubResource("Animation_bt7ft")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dlt6q"]
+radius = 16.0
+
+[sub_resource type="Animation" id="Animation_c5ch2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5smab"]
+resource_name = "shake"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 0), Vector2(0, 0), Vector2(-1, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nqqxl"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ukfsy"]
+_data = {
+"RESET": SubResource("Animation_c5ch2"),
+"idle": SubResource("Animation_nqqxl"),
+"shake": SubResource("Animation_5smab")
+}
+
 [node name="Plant" type="Area2D"]
 collision_layer = 0
 script = ExtResource("1_ul03o")
 
 [node name="Collectable" parent="." instance=ExtResource("1_6r6kx")]
-position = Vector2(0, -28)
+position = Vector2(0, -14)
+
+[node name="CollectableAnimation" type="AnimationPlayer" parent="Collectable"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+autoplay = "plant/idle"
+libraries = {
+"": SubResource("AnimationLibrary_3iseo"),
+"plant": SubResource("AnimationLibrary_r4ho5")
+}
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_fvxom")
@@ -94,13 +156,13 @@ texture = ExtResource("1_fvxom")
 position = Vector2(0, -0.5)
 shape = SubResource("CircleShape2D_dlt6q")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="PlantAnimation" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 autoplay = "plant/idle"
 libraries = {
-"": SubResource("AnimationLibrary_3iseo"),
-"plant": SubResource("AnimationLibrary_r4ho5")
+"": SubResource("AnimationLibrary_ukfsy")
 }
+next/shake = &"idle"
 
 [node name="PluckTimer" type="Timer" parent="."]
 unique_name_in_owner = true
