@@ -8,7 +8,7 @@ var time := 0.0:
 	get:
 		return time
 	set(value):
-		time = value
+		time = max(value, 0)
 		time_changed.emit(time)
 
 

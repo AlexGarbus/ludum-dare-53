@@ -8,5 +8,5 @@ var collectables := 0:
 	get:
 		return collectables
 	set(value):
-		collectables = value
+		collectables = max(value, 0)
 		collectables_changed.emit(collectables)
