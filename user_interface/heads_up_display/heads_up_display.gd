@@ -6,7 +6,7 @@ const COLLECTABLES_LABEL_TEXT := "x%s"
 const TIME_LABEL_TEXT := "%s sec."
 
 @onready var _collectables_label := %CollectablesLabel
-@onready var _time_label := %TimeLabel
+@onready var _time_label := %GameTimeLabel
 
 
 func _ready() -> void:
