@@ -15,7 +15,7 @@ var _overlapping_player := false
 
 func _ready() -> void:
 	_max_pluck_time = _pluck_timer.wait_time
-	_collectable_anim.play("pluck")
+	_collectable_anim.play("plant/pluck")
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -31,7 +31,7 @@ func _shorten_pluck_time() -> void:
 	var wait_time: float = _pluck_timer.wait_time - _pluck_time_decrement
 	if wait_time <= 0:
 		_pluck_timer.stop()
-		_collectable_anim.play("pluck")
+		_collectable_anim.play("plant/pluck")
 	else:
 		_pluck_timer.wait_time = wait_time
 		pluck_time_shortened.emit(wait_time)
@@ -52,4 +52,4 @@ func _on_collectable_collected() -> void:
 
 
 func _on_pluck_timer_timeout() -> void:
-	_collectable_anim.play("pluck")
+	_collectable_anim.play("plant/pluck")
