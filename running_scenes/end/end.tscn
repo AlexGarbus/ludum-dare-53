@@ -1,9 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://lqsoa0l0mc7o"]
+[gd_scene load_steps=10 format=3 uid="uid://lqsoa0l0mc7o"]
 
 [ext_resource type="Script" path="res://running_scenes/end/end.gd" id="1_2qhvm"]
 [ext_resource type="Theme" uid="uid://djdva3ay43dso" path="res://user_interface/theme/theme.tres" id="1_d06nc"]
+[ext_resource type="Script" path="res://running_scenes/end/end_dialogue.gd" id="2_hf5y1"]
 [ext_resource type="Texture2D" uid="uid://bv0k6pvnrt52l" path="res://objects/player/player.png" id="2_vxxr1"]
 [ext_resource type="Texture2D" uid="uid://dk3ymm7jk7l3g" path="res://running_scenes/end/customer.png" id="3_rt8p4"]
+
+[sub_resource type="Resource" id="Resource_j5wpw"]
+script = ExtResource("2_hf5y1")
+collectable_par = 10
+time_par = 60.0
+no_pars_text = "RUTARABBIT:
+\"This is not an adequate supply of Rutabaga Rockets. And on top of that, you're late. That is unacceptable!"
+collectable_par_text = "RUTARABBIT:
+\"This amount of Rutabaga Rockets will do nicely. But you're late! That is unacceptable!\""
+time_par_text = "RUTARABBIT:
+\"You got here quick. But this is not enough Rutabaga Rockets. That is unacceptable!"
+all_pars_text = "RUTARABBIT:
+\"Such a fast and plentiful delivery. Well done. But you now know about my plan to take over the world with Rutabaga Rockets. That is unacceptable!"
 
 [sub_resource type="Animation" id="Animation_ki7ml"]
 resource_name = "end"
@@ -112,12 +126,12 @@ _data = {
 
 [node name="End" type="Node"]
 script = ExtResource("1_2qhvm")
+_end_dialogue = SubResource("Resource_j5wpw")
 
 [node name="UserInterface" type="CanvasLayer" parent="."]
 layer = -1
 
 [node name="Dialogue" type="Control" parent="UserInterface"]
-unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -135,13 +149,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="UserInterface/Dialogue"]
+unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -60.0
-offset_bottom = -22.0
+anchor_bottom = 1.0
+offset_top = 4.0
+offset_bottom = -57.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "RUTARABBIT:
@@ -151,6 +165,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="CharacterPivot" type="Node2D" parent="."]
+position = Vector2(0, 64)
 
 [node name="Player" type="Sprite2D" parent="CharacterPivot"]
 position = Vector2(128, 128)
