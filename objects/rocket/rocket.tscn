@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cs6f4mvqqt54o"]
+[gd_scene load_steps=6 format=3 uid="uid://cs6f4mvqqt54o"]
 
 [ext_resource type="Texture2D" uid="uid://bnlfwwesa6l50" path="res://objects/rutabaga.png" id="1_8mndl"]
 [ext_resource type="Script" path="res://objects/rocket/rocket.gd" id="1_lf2bm"]
+[ext_resource type="Script" path="res://objects/rocket/rocket_audio.gd" id="3_vyu85"]
+[ext_resource type="AudioStream" uid="uid://c7dml4bafbfht" path="res://objects/rocket/rocket.wav" id="4_ibkc3"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dquc0"]
 particle_flag_disable_z = true
@@ -28,3 +30,12 @@ process_material = SubResource("ParticleProcessMaterial_dquc0")
 unique_name_in_owner = true
 rotation = -1.57079
 texture = ExtResource("1_8mndl")
+
+[node name="Audio" type="Node" parent="."]
+script = ExtResource("3_vyu85")
+
+[node name="RocketPlayer" type="AudioStreamPlayer" parent="Audio"]
+unique_name_in_owner = true
+stream = ExtResource("4_ibkc3")
+
+[connection signal="enabled" from="." to="Audio" method="_on_rocket_enabled"]

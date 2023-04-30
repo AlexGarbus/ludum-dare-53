@@ -2,6 +2,9 @@ class_name Rocket
 extends Node2D
 
 
+signal enabled()
+signal disabled()
+
 const ROTATION_RIGHT: float = 0
 const ROTATION_UP: float = PI / 2
 const ROTATION_LEFT: float = PI
@@ -13,6 +16,18 @@ const ROTATION_DOWN: float = 3 * PI / 2
 
 func _ready() -> void:
 	_sprite.visible = false
+
+
+func enable() -> void:
+	_sprite.visible = true
+	_particles.emitting = true
+	enabled.emit()
+
+
+func disable() -> void:
+	_sprite.visible = false
+	_particles.emitting = false
+	disabled.emit()
 
 
 func rotate_towards_direction(direction: Vector2) -> void:
@@ -27,11 +42,9 @@ func rotate_towards_direction(direction: Vector2) -> void:
 
 
 func _on_player_used_rocket(direction: Vector2) -> void:
-	_sprite.visible = true
-	_particles.emitting = true
+	enable()
 	rotate_towards_direction(direction)
 
 
 func _on_rocket_timer_timeout() -> void:
-	_sprite.visible = false
-	_particles.emitting = false
+	disable()
