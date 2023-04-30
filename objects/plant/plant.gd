@@ -2,6 +2,8 @@ class_name Plant
 extends Area2D
 
 
+signal pluck_time_shortened(value: float)
+
 @export var _pluck_time_decrement := 0.5
 var _max_pluck_time: float
 var _overlapping_player := false
@@ -30,6 +32,7 @@ func _shorten_pluck_time() -> void:
 		_anim.play("plant/pluck")
 	else:
 		_pluck_timer.wait_time = wait_time
+		pluck_time_shortened.emit(wait_time)
 
 
 func _on_body_entered(body: Node2D) -> void:

@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://deqxa7mg4fehe"]
+[gd_scene load_steps=12 format=3 uid="uid://deqxa7mg4fehe"]
 
 [ext_resource type="PackedScene" uid="uid://48kexsuej2vh" path="res://objects/collectable/collectable.tscn" id="1_6r6kx"]
 [ext_resource type="Texture2D" uid="uid://cfinvtki7ycja" path="res://objects/plant/plant.png" id="1_fvxom"]
 [ext_resource type="Script" path="res://objects/plant/plant.gd" id="1_ul03o"]
+[ext_resource type="Script" path="res://objects/plant/plant_audio.gd" id="4_k2jot"]
+[ext_resource type="AudioStream" uid="uid://cvmab1jnbgrq2" path="res://objects/plant/pluck.wav" id="5_2w5r3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dlt6q"]
 radius = 16.0
@@ -105,7 +107,15 @@ unique_name_in_owner = true
 wait_time = 10.0
 one_shot = true
 
+[node name="Audio" type="Node" parent="."]
+script = ExtResource("4_k2jot")
+
+[node name="PluckPlayer" type="AudioStreamPlayer" parent="Audio"]
+unique_name_in_owner = true
+stream = ExtResource("5_2w5r3")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="pluck_time_shortened" from="." to="Audio" method="_on_plant_pluck_time_shortened"]
 [connection signal="collected" from="Collectable" to="." method="_on_collectable_collected"]
 [connection signal="timeout" from="PluckTimer" to="." method="_on_pluck_timer_timeout"]
