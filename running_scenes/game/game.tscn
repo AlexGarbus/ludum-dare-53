@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://chm0t6pe4b8mt"]
+[gd_scene load_steps=9 format=3 uid="uid://chm0t6pe4b8mt"]
 
 [ext_resource type="PackedScene" uid="uid://bd2krml6i2c15" path="res://level/level.tscn" id="1_0ikda"]
 [ext_resource type="Script" path="res://running_scenes/game/game.gd" id="1_womsi"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://running_scenes/game/game_camera.gd" id="3_2rm3y"]
 [ext_resource type="PackedScene" uid="uid://k4tsgvk4xd1w" path="res://user_interface/heads_up_display/heads_up_display.tscn" id="5_kugxw"]
 [ext_resource type="AudioStream" uid="uid://cpc0auxwue03k" path="res://running_scenes/game/game.wav" id="6_n6ov0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uxpwb"]
+distance = 0.01
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_l6ohq"]
 normal = Vector2(0, 1)
@@ -47,7 +50,7 @@ position = Vector2(0, 124)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameCamera/WorldBoundary"]
-shape = SubResource("WorldBoundaryShape2D_l6ohq")
+shape = SubResource("WorldBoundaryShape2D_uxpwb")
 
 [node name="UserInterfaceLayer" type="CanvasLayer" parent="."]
 
@@ -68,23 +71,23 @@ debug_color = Color(0.160784, 0.643137, 0, 0.419608)
 [connection signal="body_entered" from="Level/Plant" to="Level/Plant" method="_on_body_entered" flags=18]
 [connection signal="body_exited" from="Level/Plant" to="Level/Plant" method="_on_body_exited" flags=18]
 [connection signal="pluck_time_shortened" from="Level/Plant" to="Level/Plant/Audio" method="_on_plant_pluck_time_shortened" flags=18]
-[connection signal="body_entered" from="Level/@Plant@299378" to="Level/@Plant@299378" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="Level/@Plant@299378" to="Level/@Plant@299378" method="_on_body_exited" flags=18]
-[connection signal="pluck_time_shortened" from="Level/@Plant@299378" to="Level/@Plant@299378/Audio" method="_on_plant_pluck_time_shortened" flags=18]
-[connection signal="body_entered" from="Level/@Plant@299379" to="Level/@Plant@299379" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="Level/@Plant@299379" to="Level/@Plant@299379" method="_on_body_exited" flags=18]
-[connection signal="pluck_time_shortened" from="Level/@Plant@299379" to="Level/@Plant@299379/Audio" method="_on_plant_pluck_time_shortened" flags=18]
-[connection signal="body_entered" from="Level/@Plant@299380" to="Level/@Plant@299380" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="Level/@Plant@299380" to="Level/@Plant@299380" method="_on_body_exited" flags=18]
-[connection signal="pluck_time_shortened" from="Level/@Plant@299380" to="Level/@Plant@299380/Audio" method="_on_plant_pluck_time_shortened" flags=18]
-[connection signal="body_entered" from="Level/@Plant@299381" to="Level/@Plant@299381" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="Level/@Plant@299381" to="Level/@Plant@299381" method="_on_body_exited" flags=18]
-[connection signal="pluck_time_shortened" from="Level/@Plant@299381" to="Level/@Plant@299381/Audio" method="_on_plant_pluck_time_shortened" flags=18]
-[connection signal="body_entered" from="Level/@Plant@299382" to="Level/@Plant@299382" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="Level/@Plant@299382" to="Level/@Plant@299382" method="_on_body_exited" flags=18]
-[connection signal="pluck_time_shortened" from="Level/@Plant@299382" to="Level/@Plant@299382/Audio" method="_on_plant_pluck_time_shortened" flags=18]
-[connection signal="body_entered" from="Level/@Plant@299383" to="Level/@Plant@299383" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="Level/@Plant@299383" to="Level/@Plant@299383" method="_on_body_exited" flags=18]
-[connection signal="pluck_time_shortened" from="Level/@Plant@299383" to="Level/@Plant@299383/Audio" method="_on_plant_pluck_time_shortened" flags=18]
+[connection signal="body_entered" from="Level/@Plant@35549" to="Level/@Plant@35549" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@35549" to="Level/@Plant@35549" method="_on_body_exited" flags=18]
+[connection signal="pluck_time_shortened" from="Level/@Plant@35549" to="Level/@Plant@35549/Audio" method="_on_plant_pluck_time_shortened" flags=18]
+[connection signal="body_entered" from="Level/@Plant@35550" to="Level/@Plant@35550" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@35550" to="Level/@Plant@35550" method="_on_body_exited" flags=18]
+[connection signal="pluck_time_shortened" from="Level/@Plant@35550" to="Level/@Plant@35550/Audio" method="_on_plant_pluck_time_shortened" flags=18]
+[connection signal="body_entered" from="Level/@Plant@35551" to="Level/@Plant@35551" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@35551" to="Level/@Plant@35551" method="_on_body_exited" flags=18]
+[connection signal="pluck_time_shortened" from="Level/@Plant@35551" to="Level/@Plant@35551/Audio" method="_on_plant_pluck_time_shortened" flags=18]
+[connection signal="body_entered" from="Level/@Plant@35552" to="Level/@Plant@35552" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@35552" to="Level/@Plant@35552" method="_on_body_exited" flags=18]
+[connection signal="pluck_time_shortened" from="Level/@Plant@35552" to="Level/@Plant@35552/Audio" method="_on_plant_pluck_time_shortened" flags=18]
+[connection signal="body_entered" from="Level/@Plant@35553" to="Level/@Plant@35553" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@35553" to="Level/@Plant@35553" method="_on_body_exited" flags=18]
+[connection signal="pluck_time_shortened" from="Level/@Plant@35553" to="Level/@Plant@35553/Audio" method="_on_plant_pluck_time_shortened" flags=18]
+[connection signal="body_entered" from="Level/@Plant@35554" to="Level/@Plant@35554" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Level/@Plant@35554" to="Level/@Plant@35554" method="_on_body_exited" flags=18]
+[connection signal="pluck_time_shortened" from="Level/@Plant@35554" to="Level/@Plant@35554/Audio" method="_on_plant_pluck_time_shortened" flags=18]
 [connection signal="body_entered" from="GameCamera/WorldBoundary" to="." method="_on_world_boundary_body_entered"]
 [connection signal="body_entered" from="FinishArea" to="." method="_on_finish_area_body_entered"]
