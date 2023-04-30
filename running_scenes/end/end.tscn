@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_j5wpw"]
 script = ExtResource("2_hf5y1")
 collectable_par = 10
-time_par = 60.0
+time_par = 80.0
 no_pars_text = "RUTARABBIT:
 \"This is not an adequate supply of Rutabaga Rockets. And on top of that, you're late. That is unacceptable!"
 collectable_par_text = "RUTARABBIT:
