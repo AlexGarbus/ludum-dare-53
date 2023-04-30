@@ -67,7 +67,6 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FinishArea"]
 shape = SubResource("WorldBoundaryShape2D_l6ohq")
-disabled = true
 debug_color = Color(0.160784, 0.643137, 0, 0.419608)
 
 [connection signal="body_entered" from="Level/Plant" to="Level/Plant" method="_on_body_entered" flags=18]
