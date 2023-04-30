@@ -12,7 +12,7 @@ extends Resource
 
 func get_text() -> String:
 	var collectable_par_reached: bool = PlayerData.inventory.collectables >= collectable_par
-	var time_par_reached: bool = PlayerData.game_stopwatch.time >= time_par
+	var time_par_reached: bool = PlayerData.game_stopwatch.time <= time_par
 	if collectable_par_reached and time_par_reached:
 		return all_pars_text
 	elif collectable_par_reached:
