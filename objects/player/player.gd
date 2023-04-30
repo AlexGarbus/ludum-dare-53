@@ -121,6 +121,7 @@ func _use_rocket() -> void:
 
 func _on_rocket_timer_timeout() -> void:
 	velocity.x = 0
+	velocity.y = min(velocity.y, 0)
 	state = State.IDLE if is_on_floor() else State.FALL
 
 
