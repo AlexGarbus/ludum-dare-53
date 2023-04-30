@@ -2,6 +2,8 @@ class_name Player
 extends CharacterBody2D
 
 
+signal used_rocket(direction: Vector2)
+
 @export var _horizontal_speed := 300.0
 @export var _rocket_speed := 500.0
 @export var _jump_velocity := -500.0
@@ -43,6 +45,7 @@ func _use_rocket() -> void:
 		PlayerData.inventory.collectables -= 1
 		_rocket_timer.start()
 		velocity = direction * _rocket_speed
+		used_rocket.emit(direction)
 
 
 func _on_rocket_timer_timeout() -> void:
