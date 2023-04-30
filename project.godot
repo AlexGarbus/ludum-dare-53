@@ -22,6 +22,7 @@ config/windows_native_icon="res://icon.ico"
 PlayerData="*res://global/autoload/player_data/player_data.tscn"
 ScreenManager="*res://global/autoload/screen_manager.gd"
 TreeManager="*res://global/autoload/tree_manager.gd"
+InputManager="*res://global/autoload/input_manager.gd"
 
 [display]
 
