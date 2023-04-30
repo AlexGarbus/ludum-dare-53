@@ -28,6 +28,7 @@ var look_direction := Vector2.RIGHT:
 		look_direction = value
 		look_direction_changed.emit(look_direction)
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var spawn_position: Vector2
 var state: State = State.IDLE:
 	get:
 		return state
@@ -46,6 +47,10 @@ var state: State = State.IDLE:
 		state = value
 
 @onready var _rocket_timer: Timer = %RocketTimer
+
+
+func _ready() -> void:
+	spawn_position = global_position
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -84,6 +89,10 @@ func _physics_process(delta) -> void:
 	move_and_slide()
 
 
+func respawn() -> void:
+	global_position = spawn_position
+
+
 func _apply_horizontal_input() -> void:
 	var direction: float = InputUtility.get_axis_ceil("move_left", "move_right")
 	velocity.x = direction * _horizontal_speed
@@ -115,3 +124,7 @@ func _use_rocket() -> void:
 func _on_rocket_timer_timeout() -> void:
 	velocity.x = 0
 	state = State.IDLE if is_on_floor() else State.FALL
+
+
+func _on_world_boundary_body_entered(body: Node2D) -> void:
+	respawn()
