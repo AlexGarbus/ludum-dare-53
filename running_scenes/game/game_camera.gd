@@ -7,8 +7,9 @@ extends Camera2D
 @onready var _player: Player = %Player
 
 func _physics_process(delta: float) -> void:
-	global_position.y = min(global_position.y, _player.position.y + _max_player_offset)
+	var _target_height: float = round(_player.position.y + _max_player_offset)
+	global_position.y = min(global_position.y, _target_height)
 
 
 func _on_world_boundary_body_entered(body: Node2D) -> void:
-	global_position.y = _player.global_position.y
+	global_position.y = round(_player.global_position.y)
