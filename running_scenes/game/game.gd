@@ -23,3 +23,9 @@ func respawn() -> void:
 func _on_world_boundary_body_entered(body: Node2D) -> void:
 	if body is Player:
 		respawn()
+
+
+func _on_finish_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		PlayerData.game_stopwatch.started = false
+		get_tree().change_scene_to_file(ScenePaths.END)
