@@ -19,7 +19,7 @@ enum State {
 
 @export var _horizontal_speed := 300.0
 @export var _rocket_speed := 500.0
-@export var _jump_velocity := -500.0
+@export var _jump_velocity := -550.0
 @export var _jump_interrupt_factor := 0.5
 var look_direction := Vector2.RIGHT:
 	get:
@@ -61,9 +61,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			State.IDLE, State.WALK:
 				if event.is_action_pressed("move_up"):
 					velocity.y = _jump_velocity
-					jumped.emit()
+					state = State.JUMP
 			State.JUMP:
-				if event.is_action_released("move_up") and velocity.y < 0:
+				if event.is_action_released("move_up"):
 					velocity.y *= _jump_interrupt_factor
 
 
@@ -76,9 +76,7 @@ func _physics_process(delta) -> void:
 		State.JUMP:
 			_apply_horizontal_input()
 			_apply_gravity(delta)
-			if is_on_floor():
-				state = State.IDLE
-			elif velocity.y > 0:
+			if velocity.y > 0:
 				state = State.FALL
 		State.FALL:
 			_apply_horizontal_input()
