@@ -41,9 +41,12 @@ func rotate_towards_direction(direction: Vector2) -> void:
 		global_rotation = ROTATION_UP
 
 
-func _on_player_used_rocket(direction: Vector2) -> void:
+func _on_player_used_rocket() -> void:
 	enable()
-	rotate_towards_direction(direction)
+
+
+func _on_player_look_direction_changed(value: Vector2) -> void:
+	rotate_towards_direction(value)
 
 
 func _on_rocket_timer_timeout() -> void:
