@@ -15,7 +15,10 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if !_input_received and InputUtility.is_event_valid(event):
+	if (
+			!_input_received and !(event is InputEventJoypadMotion)
+			and InputUtility.is_event_valid(event)
+	):
 		_input_received = true
 		_start_game()
 
