@@ -47,4 +47,4 @@ func _use_rocket() -> void:
 
 func _on_rocket_timer_timeout() -> void:
 	_using_rocket = false
-	velocity = Vector2.ZERO
+	velocity.x = 0
