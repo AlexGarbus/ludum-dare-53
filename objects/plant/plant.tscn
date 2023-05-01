@@ -136,7 +136,6 @@ _data = {
 [node name="Plant" type="Area2D"]
 collision_layer = 0
 script = ExtResource("1_ul03o")
-_pluck_time_decrement = 1.0
 
 [node name="Collectable" parent="." instance=ExtResource("1_6r6kx")]
 position = Vector2(0, -14)
@@ -167,7 +166,7 @@ next/shake = &"idle"
 
 [node name="PluckTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 
 [node name="Audio" type="Node" parent="."]
