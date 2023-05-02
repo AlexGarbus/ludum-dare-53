@@ -3,9 +3,9 @@ extends Node2D
 
 
 const ROTATION_RIGHT: float = 0
-const ROTATION_UP: float = PI / 2
+const ROTATION_UP: float = 3 * PI / 2
 const ROTATION_LEFT: float = PI
-const ROTATION_DOWN: float = 3 * PI / 2
+const ROTATION_DOWN: float = PI / 2
 
 @export var gravity_factor: float = 0.01
 
