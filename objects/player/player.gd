@@ -59,11 +59,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	else:
 		match state:
 			State.IDLE, State.WALK:
-				if event.is_action_pressed("move_up"):
+				if event.is_action_pressed("jump"):
 					velocity.y = _jump_velocity
 					state = State.JUMP
 			State.JUMP:
-				if event.is_action_released("move_up"):
+				if event.is_action_released("jump"):
 					velocity.y *= _jump_interrupt_factor
 
 
