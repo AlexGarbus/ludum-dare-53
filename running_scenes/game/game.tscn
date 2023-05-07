@@ -17,11 +17,6 @@ distance = 0.01
 [node name="Game" type="Node"]
 script = ExtResource("1_womsi")
 
-[node name="EndTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 0.1
-one_shot = true
-
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
 
@@ -58,14 +53,6 @@ collision_layer = 0
 shape = SubResource("WorldBoundaryShape2D_uxpwb")
 debug_color = Color(0.956863, 0.215686, 0, 0.419608)
 
-[node name="FinishArea" type="Area2D" parent="."]
-position = Vector2(192, -6984)
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishArea"]
-shape = SubResource("WorldBoundaryShape2D_l6ohq")
-debug_color = Color(0.160784, 0.643137, 0, 0.419608)
-
 [node name="UserInterfaceLayer" type="CanvasLayer" parent="."]
 
 [node name="HeadsUpDisplay" parent="UserInterfaceLayer" instance=ExtResource("5_kugxw")]
@@ -74,7 +61,14 @@ debug_color = Color(0.160784, 0.643137, 0, 0.419608)
 stream = ExtResource("6_n6ov0")
 autoplay = true
 
-[connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]
+[node name="FinishArea" type="Area2D" parent="."]
+position = Vector2(192, -6984)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishArea"]
+shape = SubResource("WorldBoundaryShape2D_l6ohq")
+debug_color = Color(0.160784, 0.643137, 0, 0.419608)
+
 [connection signal="body_entered" from="GameCamera/WorldBoundary" to="Player" method="_on_world_boundary_body_entered"]
 [connection signal="body_entered" from="GameCamera/WorldBoundary" to="GameCamera" method="_on_world_boundary_body_entered"]
 [connection signal="body_entered" from="FinishArea" to="." method="_on_finish_area_body_entered"]
